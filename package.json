@@ -1,0 +1,33 @@
+{
+  "name": "tapplint",
+  "version": "0.0.0",
+  "description": "JavaScript Linter for MatchingAgent",
+  "license": "MIT",
+  "repository": "MatchingAgent/tapplint",
+  "author": {
+    "name": "Shogo Sensui",
+    "email": "shogo.sensui@gmail.com",
+    "url": "github.com/1000ch"
+  },
+  "bin": {
+    "tapplint": "cli.js"
+  },
+  "scripts": {
+    "test": "nyc ava",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "dependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.11.1",
+    "eslint-formatter-pretty": "^1.1.0",
+    "get-stdin": "^5.0.1",
+    "globby": "^6.1.0",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "coveralls": "^2.11.15",
+    "nyc": "^10.0.0",
+    "pify": "^2.3.0"
+  }
+}
