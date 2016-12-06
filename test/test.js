@@ -1,18 +1,43 @@
+const path = require('path');
 const test = require('ava');
 const pify = require('pify');
 const fsP = pify(require('fs'));
+const eslint = require('eslint');
 const lint = require('..');
 
-test('lintText', async t => {
-  const fileName = `${__dirname}/fixtures/lintText.js`;
+test('Validate config', t => {
+  const cli = new eslint.CLIEngine({
+    useEslintrc: false,
+    configFile: path.resolve(__dirname, '../config/index.js')
+  });
+
+  const code = 'let foo = 1;\const bar = function () {};\nbar(foo);\n';
+
+  t.is(cli.executeOnText(code).errorCount, 0);
+});
+
+test('tapplint.lintText', async t => {
+  const fileName = `${__dirname}/fixtures/lint-text.js`;
   const buffer = await fsP.readFile(fileName);
   const report = await lint.lintText(buffer, fileName);
 
   t.is(report.results.length, 1);
 });
 
-test('lintFiles', async t => {
+test('tapplint.lintFiles', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/*.js`], {});
 
-  t.is(report.results.length, 1);
+  t.is(report.results.length, 3);
+});
+
+test('Best Practices', async t => {
+  const report = await lint.lintFiles([`${__dirname}/fixtures/best-practices.js`], {});
+
+  t.is(report.results[0].messages.length, 2);
+});
+
+test('Stylistic Issues', async t => {
+  const report = await lint.lintFiles([`${__dirname}/fixtures/stylistic-issues.js`], {});
+
+  t.is(report.results[0].messages.length, 2);
 });
