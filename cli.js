@@ -1,15 +1,24 @@
 #!/usr/bin/env node
 
+const fs = require('fs');
 const getStdin = require('get-stdin');
 const minimist = require('minimist');
 const linter = require('.');
 
 const argv = minimist(process.argv.slice(2), {
-  v: 'version'
+  v: 'version',
+  h: 'help'
 });
 
-if (argv.v) {
+if (argv.v || argv.version) {
   process.stdout.write(require('./package').version);
+  return;
+}
+
+if (argv.h || argv.help) {
+  fs.createReadStream(`${__dirname}/usage.txt`)
+    .pipe(process.stdout)
+    .on('close', () => process.exit(1));
   return;
 }
 
