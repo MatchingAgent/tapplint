@@ -13,7 +13,7 @@ test('Validate config', t => {
     configFile: path.resolve(__dirname, '../config/index.js')
   });
 
-  const code = 'let foo = 1;\const bar = function () {};\nbar(foo);\n';
+  const code = 'let foo = 1;\nconst bar = function () {};\nbar(foo);\n';
 
   t.is(cli.executeOnText(code).errorCount, 0);
 });
@@ -29,13 +29,13 @@ test('tapplint.lintText', async t => {
 test('tapplint.lintFiles', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/*.js`], {});
 
-  t.is(report.results.length, 3);
+  t.is(report.results.length, 8);
 });
 
 test('Possible Errors', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/possible-errors.js`], {});
 
-  t.is(report.results[0].messages.length, 2);
+  t.is(report.results[0].messages.length, 0);
 });
 
 test('Best Practices', async t => {
@@ -47,19 +47,19 @@ test('Best Practices', async t => {
 test('Strict Mode', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/strict-mode.js`], {});
 
-  t.is(report.results[0].messages.length, 2);
+  t.is(report.results[0].messages.length, 0);
 });
 
 test('Variables', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/variables.js`], {});
 
-  t.is(report.results[0].messages.length, 2);
+  t.is(report.results[0].messages.length, 0);
 });
 
 test('Node.js and CommonJS', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/nodejs-and-commonjs.js`], {});
 
-  t.is(report.results[0].messages.length, 2);
+  t.is(report.results[0].messages.length, 0);
 });
 
 test('Stylistic Issues', async t => {
