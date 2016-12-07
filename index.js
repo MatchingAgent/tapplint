@@ -4,20 +4,26 @@ const globby = require('globby');
 const eslint = require('eslint');
 const config = require('./config');
 
-function normalize(options) {
-  return Object.assign({
-    ignore: [
-      '**/node_modules/**',
-      '**/bower_components/**',
-      'coverage/**',
-      '{tmp,temp}/**',
-      '**/*.min.js',
-      '**/bundle.js',
-      '{test,tests,spec,__tests__}/fixture{s,}/**',
-      'vendor/**',
-      'dist/**'
-    ]
-  }, options);
+function normalize(argv) {
+  const defaultOptions = {
+    ignore: []
+  };
+
+  const options = Object.assign(defaultOptions, argv);
+
+  options.ignore = options.ignore.concat([
+    '**/node_modules/**',
+    '**/bower_components/**',
+    'coverage/**',
+    '{tmp,temp}/**',
+    '**/*.min.js',
+    '**/bundle.js',
+    '{test,tests,spec,__tests__}/fixture{s,}/**',
+    'vendor/**',
+    'dist/**'
+  ]);
+
+  return options;
 }
 
 exports.lintText = (text, argv) => {
