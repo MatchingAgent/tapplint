@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const getStdin = require('get-stdin');
 const minimist = require('minimist');
 const linter = require('.');

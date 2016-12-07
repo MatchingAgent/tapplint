@@ -1,3 +1,13 @@
+const rules = Object.assign(
+  {},
+  require('./possible-errors'),
+  require('./best-practices'),
+  require('./strict-mode'),
+  require('./variables'),
+  require('./nodejs-and-commonjs'),
+  require('./stylistic-issues')
+);
+
 module.exports = {
   env: {
     es6: true,
@@ -6,9 +16,5 @@ module.exports = {
     browser: true
   },
   parser: 'babel-eslint',
-  rules: Object.assign(
-    {},
-    require('./best-practices'),
-    require('./stylistic-issues')
-  )
+  rules: rules
 };

@@ -30,8 +30,32 @@ test('tapplint.lintFiles', async t => {
   t.is(report.results.length, 3);
 });
 
+test('Possible Errors', async t => {
+  const report = await lint.lintFiles([`${__dirname}/fixtures/possible-errors.js`], {});
+
+  t.is(report.results[0].messages.length, 2);
+});
+
 test('Best Practices', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/best-practices.js`], {});
+
+  t.is(report.results[0].messages.length, 2);
+});
+
+test('Strict Mode', async t => {
+  const report = await lint.lintFiles([`${__dirname}/fixtures/strict-mode.js`], {});
+
+  t.is(report.results[0].messages.length, 2);
+});
+
+test('Variables', async t => {
+  const report = await lint.lintFiles([`${__dirname}/fixtures/variables.js`], {});
+
+  t.is(report.results[0].messages.length, 2);
+});
+
+test('Node.js and CommonJS', async t => {
+  const report = await lint.lintFiles([`${__dirname}/fixtures/nodejs-and-commonjs.js`], {});
 
   t.is(report.results[0].messages.length, 2);
 });
