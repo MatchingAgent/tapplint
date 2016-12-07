@@ -1,3 +1,5 @@
+'use strict';
+
 const globby = require('globby');
 const eslint = require('eslint');
 const config = require('./config');
@@ -5,7 +7,7 @@ const config = require('./config');
 exports.lintText = (text, options) => {
   const engine = new eslint.CLIEngine(config);
   const fileName = options.fileName;
-	return engine.executeOnText(text, fileName);
+  return engine.executeOnText(text, fileName);
 };
 
 exports.lintFiles = (args, options) => {

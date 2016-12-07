@@ -1,3 +1,5 @@
+'use strict';
+
 const rules = Object.assign(
   {},
   require('./possible-errors'),

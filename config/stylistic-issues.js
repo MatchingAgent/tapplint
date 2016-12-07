@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   // enforce consistent indentation
   indent: ['error', 2],
