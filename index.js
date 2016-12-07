@@ -12,8 +12,9 @@ exports.lintText = (text, options) => {
 
 exports.lintFiles = (args, options) => {
   const engine = new eslint.CLIEngine(config);
+  const paths = args.length ? args : '**/*';
 
-  return globby(args).then(paths => engine.executeOnFiles(paths, options));
+  return globby(paths).then(paths => engine.executeOnFiles(paths, options));
 };
 
 exports.getFormatter = eslint.CLIEngine.getFormatter;
