@@ -35,7 +35,7 @@ exports.lintText = (text, argv) => {
 
 exports.lintFiles = (args, argv) => {
   const engine = new eslint.CLIEngine(config);
-  const paths = args.length ? args : '**/*';
+  const paths = args.length ? args : '**/*.js';
   const options = normalize(argv);
 
   return globby(paths, {
