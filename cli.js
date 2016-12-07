@@ -13,15 +13,7 @@ if (argv.v) {
   return;
 }
 
-if (argv._.length) {
-  linter.lintFiles(argv._, argv).then(report => {
-    if (argv.fix) {
-      linter.outputFixes(report);
-    }
-
-    output(report);
-  });
-} else {
+if (argv.stdin) {
   getStdin().then(text => {
     if (argv.fix) {
       const report = linter.lintText(text, argv);
@@ -30,6 +22,14 @@ if (argv._.length) {
     } else {
       output(linter.lintText(text, argv));
     }
+  });
+} else {
+  linter.lintFiles(argv._, argv).then(report => {
+    if (argv.fix) {
+      linter.outputFixes(report);
+    }
+
+    output(report);
   });
 }
 
