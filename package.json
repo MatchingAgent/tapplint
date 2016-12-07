@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "nyc ava",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "babel-eslint": "^7.1.1",
