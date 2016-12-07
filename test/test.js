@@ -41,7 +41,7 @@ test('Possible Errors', async t => {
 test('Best Practices', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/best-practices.js`], {});
 
-  t.is(report.results[0].messages.length, 2);
+  t.is(report.results[0].messages.length, 3);
 });
 
 test('Strict Mode', async t => {
@@ -65,5 +65,5 @@ test('Node.js and CommonJS', async t => {
 test('Stylistic Issues', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/stylistic-issues.js`], {});
 
-  t.is(report.results[0].messages.length, 2);
+  t.is(report.results[0].messages.length, 4);
 });
