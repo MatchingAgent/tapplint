@@ -29,7 +29,7 @@ module.exports = {
   'func-call-spacing': ['error', 'never'],
 
   // enforce consistent indentation
-  indent: ['error', 2],
+  indent: ['error', 2, { SwitchCase: 1 }],
 
   // enforce consistent spacing between keys and values in object literal properties
   'key-spacing': ['error', {
