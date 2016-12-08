@@ -7,7 +7,8 @@ const rules = Object.assign(
   require('./strict-mode'),
   require('./variables'),
   require('./nodejs-and-commonjs'),
-  require('./stylistic-issues')
+  require('./stylistic-issues'),
+  require('./react')
 );
 
 module.exports = {
@@ -18,5 +19,15 @@ module.exports = {
     browser: true
   },
   parser: 'babel-eslint',
+  plugins: [
+    'import',
+    'react'
+  ],
+  parserOptions: {
+    ecmaVersion: 8,
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
   rules: rules
 };
