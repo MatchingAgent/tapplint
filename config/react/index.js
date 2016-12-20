@@ -95,7 +95,7 @@ module.exports = {
   'react/jsx-filename-extension': 'off',
 
   // Enforce position of the first prop in JSX
-  'react/jsx-first-prop-new-line': ['error', 'never'],
+  'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
 
   // Enforce event handler naming conventions in JSX
   'react/jsx-handler-names': 'off',
