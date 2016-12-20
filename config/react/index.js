@@ -80,10 +80,10 @@ module.exports = {
   'react/style-prop-object': 'off',
 
   // Enforce boolean attributes notation in JSX (fixable)
-  'react/jsx-boolean-value': ['error', 'always'],
+  'react/jsx-boolean-value': ['error', 'never'],
 
   // Validate closing bracket location in JSX (fixable)
-  'react/jsx-closing-bracket-location': ['error', 'tag-aligned'],
+  'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
 
   // Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
   'react/jsx-curly-spacing': ['error', 'never'],
