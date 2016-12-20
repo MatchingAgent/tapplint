@@ -83,7 +83,7 @@ module.exports = {
   'react/jsx-boolean-value': ['error', 'never'],
 
   // Validate closing bracket location in JSX (fixable)
-  'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
+  'react/jsx-closing-bracket-location': ['error', 'after-props'],
 
   // Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
   'react/jsx-curly-spacing': ['error', 'never'],
