@@ -7,9 +7,6 @@ module.exports = {
   // equire the use of === and !==
   eqeqeq: 'error',
 
-  // disallow extending native types
-  'no-extend-native': 'error',
-
   // disallow the use of eval()
   'no-eval': 'error',
 
