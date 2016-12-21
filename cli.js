@@ -22,6 +22,12 @@ if (argv.h || argv.help) {
   return;
 }
 
+function output(report, reporter) {
+  const formatter = reporter ? linter.getFormatter(reporter) : require('eslint-formatter-pretty');
+  process.stdout.write(formatter(report.results));
+  process.exit(report.errorCount === 0 ? 0 : 1);
+}
+
 if (argv.stdin) {
   getStdin().then(text => {
     if (argv.fix) {
@@ -29,7 +35,7 @@ if (argv.stdin) {
       const result = report.results.shift();
       console.log(result.output);
     } else {
-      output(linter.lintText(text, argv));
+      output(linter.lintText(text, argv), argv.reporter);
     }
   });
 } else {
@@ -38,12 +44,6 @@ if (argv.stdin) {
       linter.outputFixes(report);
     }
 
-    output(report);
+    output(report, argv.reporter);
   });
-}
-
-function output(report) {
-  const reporter = argv.reporter ? linter.getFormatter(argv.reporter) : require('eslint-formatter-pretty');
-  process.stdout.write(reporter(report.results));
-  process.exit(report.errorCount === 0 ? 0 : 1);
 }

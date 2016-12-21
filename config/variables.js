@@ -10,6 +10,9 @@ module.exports = {
   // disallow labels that share a name with a variable
   'no-label-var': 'error',
 
+  // disallow the use of undeclared variables unless mentioned in /*global */ comments
+  'no-undef': 'error',
+
   // disallow unused variables
   'no-unused-vars': 'error',
 
