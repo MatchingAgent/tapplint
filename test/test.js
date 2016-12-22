@@ -71,5 +71,5 @@ test('Stylistic Issues', async t => {
 test('Rules for React plugin', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/react/index.js`], {});
 
-  t.is(report.results[0].messages.length, 4);
+  t.is(report.results[0].messages.length, 3);
 });

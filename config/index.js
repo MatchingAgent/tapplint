@@ -12,12 +12,12 @@ const rules = Object.assign(
 );
 
 module.exports = {
-  env: {
-    es6: true,
-    node: true,
-    commonjs: true,
-    browser: true
-  },
+  envs: [
+    'es6',
+    'node',
+    'commonjs',
+    'browser'
+  ],
   parser: 'babel-eslint',
   plugins: [
     'import',
