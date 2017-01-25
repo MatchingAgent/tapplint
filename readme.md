@@ -23,3 +23,7 @@ Options
   --stdin         Validate/fix code from stdin
   --ignore        Additional paths to ignore  [Can be set multiple times]
 ```
+
+## License
+
+MIT © [MatchingAgent](https://github.com/MatchingAgent)
