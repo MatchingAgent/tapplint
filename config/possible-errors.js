@@ -26,7 +26,9 @@ module.exports = {
   'no-ex-assign': 'error',
 
   // disallow unnecessary parentheses
-  'no-extra-parens': 'error',
+  'no-extra-parens': ['error', 'all', {
+    nestedBinaryExpressions: false
+  }],
 
   // disallow unnecessary semicolons
   'no-extra-semi': 'error',
