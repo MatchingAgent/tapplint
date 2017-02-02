@@ -70,6 +70,9 @@ module.exports = {
   // disallow all tabs
   'no-tabs': 'error',
 
+  // disallow dangling underscores in identifiers
+  'no-underscore-dangle': 'error',
+
   // disallow whitespace before properties
   'no-whitespace-before-property': 'error',
 
