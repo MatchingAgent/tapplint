@@ -21,7 +21,7 @@ test('Validate config', t => {
 test('tapplint.lintText', async t => {
   const fileName = `${__dirname}/fixtures/lint-text.js`;
   const buffer = await fsP.readFile(fileName);
-  const report = await lint.lintText(buffer, fileName);
+  const report = await lint.lintText(buffer, { fileName });
 
   t.is(report.results.length, 1);
 });
@@ -72,4 +72,18 @@ test('Rules for React plugin', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/react/index.js`], {});
 
   t.is(report.results[0].messages.length, 3);
+});
+
+test('Extend default rules', async t => {
+  const report = await lint.lintFiles([`${__dirname}/fixtures/misc/extend.js`], {
+    config: {
+      rules: {
+        'no-underscore-dangle': ['error', {
+          allow: ['_id']
+        }]
+      }
+    }
+  });
+
+  t.is(report.results[0].messages.length, 1);
 });
