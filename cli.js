@@ -34,7 +34,11 @@ function getConfig() {
 }
 
 getConfig().then(result => {
-  argv.config = result.config || {};
+  if (result) {
+    argv.config = result.config || {};
+  } else {
+    argv.config = {};
+  }
 
   if (argv.stdin) {
     getStdin().then(text => {
