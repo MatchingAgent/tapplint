@@ -3,6 +3,7 @@
 const fs = require('fs');
 const getStdin = require('get-stdin');
 const minimist = require('minimist');
+const cosmiconfig = require('cosmiconfig');
 const linter = require('.');
 
 const argv = minimist(process.argv.slice(2), {
@@ -28,22 +29,30 @@ function output(report, reporter) {
   process.exit(report.errorCount === 0 ? 0 : 1);
 }
 
-if (argv.stdin) {
-  getStdin().then(text => {
-    if (argv.fix) {
-      const report = linter.lintText(text, argv);
-      const result = report.results.shift();
-      console.log(result.output);
-    } else {
-      output(linter.lintText(text, argv), argv.reporter);
-    }
-  });
-} else {
-  linter.lintFiles(argv._, argv).then(report => {
-    if (argv.fix) {
-      linter.outputFixes(report);
-    }
-
-    output(report, argv.reporter);
-  });
+function getConfig() {
+  return cosmiconfig('tapplint').load(null);
 }
+
+getConfig().then(result => {
+  argv.config = result.config || {};
+
+  if (argv.stdin) {
+    getStdin().then(text => {
+      if (argv.fix) {
+        const report = linter.lintText(text, argv);
+        const result = report.results.shift();
+        console.log(result.output);
+      } else {
+        output(linter.lintText(text, argv), argv.reporter);
+      }
+    });
+  } else {
+    linter.lintFiles(argv._, argv).then(report => {
+      if (argv.fix) {
+        linter.outputFixes(report);
+      }
+
+      output(report, argv.reporter);
+    });
+  }
+});
