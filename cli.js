@@ -30,7 +30,7 @@ function output(report, reporter) {
 }
 
 function getConfig() {
-  return cosmiconfig('tapplint').load(null);
+  return cosmiconfig('tapplint').load(process.cwd());
 }
 
 getConfig().then(result => {
