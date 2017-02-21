@@ -79,6 +79,9 @@ module.exports = {
   // Enforce style prop value being an object
   'react/style-prop-object': 'off',
 
+  // Prevent void DOM elements (e.g. <img />, <br />) from receiving children
+  'react/void-dom-elements-no-children': 'error',
+
   // Enforce boolean attributes notation in JSX (fixable)
   'react/jsx-boolean-value': ['error', 'never'],
 
