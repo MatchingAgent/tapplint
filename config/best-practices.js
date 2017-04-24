@@ -4,8 +4,8 @@ module.exports = {
   // enforce consistent brace style for all control statements
   curly: ['error', 'all'],
 
-  // equire the use of === and !==
-  eqeqeq: 'error',
+  // equire the use of === and !== ignore null
+  eqeqeq: ['error', 'always', {'null': 'ignore'}],
 
   // disallow the use of eval()
   'no-eval': 'error',
