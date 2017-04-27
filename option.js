@@ -7,6 +7,10 @@ const defaultOptions = {
 exports.normalize = (argv) => {
   const options = Object.assign(defaultOptions, argv);
 
+  if (!Array.isArray(options.ignore)) {
+    options.ignore = [options.ignore];
+  }
+
   options.ignore = options.ignore.concat([
     '**/node_modules/**',
     '**/bower_components/**',
