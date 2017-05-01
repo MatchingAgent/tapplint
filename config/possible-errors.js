@@ -27,7 +27,8 @@ module.exports = {
 
   // disallow unnecessary parentheses
   'no-extra-parens': ['error', 'all', {
-    nestedBinaryExpressions: false
+    nestedBinaryExpressions: false,
+    ignoreJSX: 'multi-line'
   }],
 
   // disallow unnecessary semicolons
