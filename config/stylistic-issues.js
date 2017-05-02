@@ -71,7 +71,9 @@ module.exports = {
   'no-tabs': 'error',
 
   // disallow dangling underscores in identifiers
-  'no-underscore-dangle': 'error',
+  'no-underscore-dangle': ['error', {
+    allow: ['_id']
+  }],
 
   // disallow whitespace before properties
   'no-whitespace-before-property': 'error',
