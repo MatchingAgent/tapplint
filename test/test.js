@@ -8,10 +8,7 @@ const eslint = require('eslint');
 const lint = require('..');
 
 test('Validate config', t => {
-  const cli = new eslint.CLIEngine({
-    useEslintrc: false,
-    configFile: path.resolve(__dirname, '../config/index.js')
-  });
+  const cli = new eslint.CLIEngine();
 
   const code = 'let foo = 1;\nconst bar = function () {};\nbar(foo);\n';
 
@@ -71,7 +68,7 @@ test('Stylistic Issues', async t => {
 test('Rules for React plugin', async t => {
   const report = await lint.lintFiles([`${__dirname}/fixtures/react/index.js`], {});
 
-  t.is(report.results[0].messages.length, 3);
+  t.is(report.results[0].messages.length, 4);
 });
 
 test('Extend default rules', async t => {
