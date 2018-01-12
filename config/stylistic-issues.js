@@ -11,7 +11,7 @@ module.exports = {
   'brace-style': 'error',
 
   // require or disallow trailing commas
-  'comma-dangle': 'error',
+  'comma-dangle': ['error', 'only-multiline'],
 
   // enforce consistent spacing before and after commas
   'comma-spacing': ['error', {
