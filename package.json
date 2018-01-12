@@ -1,6 +1,6 @@
 {
   "name": "tapplint",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "JavaScript Linter for MatchingAgent",
   "license": "MIT",
   "repository": "MatchingAgent/tapplint",
