@@ -3,7 +3,7 @@
 const merge = require('lodash.merge');
 const globby = require('globby');
 const eslint = require('eslint');
-const config = require('./config');
+const config = require('eslint-config-tapplint');
 const option = require('./option');
 
 exports.lintText = (text, argv) => {
